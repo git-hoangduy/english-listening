@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>English Listening Practice</title>
+<meta name="description" content="Luyện nghe tiếng Anh A1–A2: bài đọc, phiên âm IPA và bản dịch tiếng Việt.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121417" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f5f6f8;
+  --text: #16181c;
+  --muted: #5d636e;
+  --ipa: #4a5160;
+  --vi: #5a5f6b;
+  --line: #e3e5ea;
+  --accent: #2456c9;
+  --accent-soft: #e8eefb;
+  --done: #1f8a4c;
+  --fs: 17px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121417; --surface: #1c1f24; --text: #eceef2; --muted: #a2a8b3;
+    --ipa: #b9c0cc; --vi: #a9afba; --line: #2c3038; --accent: #7fa6ff;
+    --accent-soft: #1e2a44; --done: #4cc47f;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121417; --surface: #1c1f24; --text: #eceef2; --muted: #a2a8b3;
+  --ipa: #b9c0cc; --vi: #a9afba; --line: #2c3038; --accent: #7fa6ff;
+  --accent-soft: #1e2a44; --done: #4cc47f;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+button { font: inherit; color: inherit; }
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 16px calc(32px + env(safe-area-inset-bottom)); }
+
+/* top bar */
+.bar {
+  position: sticky; top: 0; z-index: 5; background: var(--bg);
+  border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top);
+}
+.bar .wrap { display: flex; align-items: center; gap: 8px; min-height: 52px; padding-bottom: 0; }
+.bar h1 { font-size: 17px; margin: 0; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.icon-btn {
+  border: 0; background: transparent; min-width: 40px; height: 40px; border-radius: 10px;
+  display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.icon-btn:active { background: var(--surface); }
+.icon-btn svg { width: 22px; height: 22px; }
+
+/* home */
+.intro { color: var(--muted); font-size: 14px; margin: 16px 0 8px; }
+.progress { height: 6px; background: var(--surface); border-radius: 3px; overflow: hidden; margin: 6px 0 4px; }
+.progress span { display: block; height: 100%; background: var(--done); width: 0; transition: width .3s; }
+.progress-label { font-size: 13px; color: var(--muted); }
+.level { margin: 24px 0 8px; font-size: 15px; letter-spacing: .04em; color: var(--muted); }
+.list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.list a {
+  display: flex; align-items: center; gap: 12px; padding: 13px 4px;
+  border-bottom: 1px solid var(--line); color: var(--text); text-decoration: none;
+}
+.list a:active { background: var(--surface); }
+.list .num { width: 28px; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.list .t { flex: 1; }
+.list .check { width: 20px; height: 20px; color: var(--done); visibility: hidden; }
+.list .done .check { visibility: visible; }
+.source { margin-top: 32px; font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+.source a { color: inherit; word-break: break-all; }
+
+/* lesson */
+.tools {
+  display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 0;
+  border-bottom: 1px solid var(--line); margin-bottom: 8px;
+}
+.chip {
+  border: 1px solid var(--line); background: var(--bg); border-radius: 999px;
+  padding: 6px 12px; font-size: 14px; cursor: pointer; min-height: 36px;
+}
+.chip[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.lesson-head { margin: 18px 0 4px; }
+.lesson-head .lv { font-size: 13px; color: var(--muted); letter-spacing: .04em; }
+.lesson-head h2 { margin: 2px 0 0; font-size: 24px; line-height: 1.25; }
+.para { padding: 16px 0; border-bottom: 1px solid var(--line); }
+.para:last-child { border-bottom: 0; }
+.en { font-size: var(--fs); line-height: 1.6; margin: 0; }
+.ipa, .vi {
+  font-family: "Noto Serif", Cambria, "Times New Roman", serif;
+  font-size: calc(var(--fs) * .92); line-height: 1.6; margin: 8px 0 0;
+  padding-left: 12px; border-left: 2px solid var(--line);
+}
+.ipa { color: var(--ipa); }
+.vi { color: var(--vi); font-style: italic; }
+.hide-ipa .ipa, .hide-vi .vi { display: none; }
+.cover-vi .vi { filter: blur(5px); cursor: pointer; user-select: none; }
+.cover-vi .vi.shown { filter: none; cursor: auto; user-select: text; }
+.speak {
+  border: 1px solid var(--line); background: var(--bg); border-radius: 999px; cursor: pointer;
+  font-size: 13px; padding: 4px 10px 4px 8px; margin-top: 10px;
+  display: inline-flex; align-items: center; gap: 4px; color: var(--muted);
+}
+.speak svg { width: 16px; height: 16px; }
+.speak.on { color: var(--accent); border-color: var(--accent); }
+.nav { display: flex; gap: 8px; margin-top: 24px; }
+.nav a, .nav button {
+  flex: 1; text-align: center; padding: 12px; border-radius: 12px; text-decoration: none;
+  background: var(--surface); color: var(--text); border: 0; cursor: pointer; font-size: 15px;
+}
+.nav .mark { background: var(--accent); color: #fff; }
+.nav .mark.is-done { background: var(--done); }
+.nav .disabled { visibility: hidden; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <button class="icon-btn" id="back" aria-label="Danh sách bài" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <h1 id="title">English Listening Practice</h1>
+    <button class="icon-btn" id="theme" aria-label="Đổi giao diện sáng/tối">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="home">
+    <p class="intro">Luyện nghe tiếng Anh A1 → A2. Mỗi đoạn có bài đọc, phiên âm IPA (giọng Mỹ) và bản dịch tiếng Việt.</p>
+    <div class="progress"><span id="bar"></span></div>
+    <div class="progress-label" id="progress-label"></div>
+    <div id="levels"></div>
+    <p class="source">
+      Nguồn: các video luyện nghe trên YouTube và podcast <i>Listening Time</i> của giáo viên, được sử dụng với sự cho phép của tác giả.<br>
+      A1: <a href="https://www.youtube.com/playlist?list=PLhNRdHEdUQewzYZ0X6gt3x9_CVen_HldI" target="_blank" rel="noopener">youtube.com/playlist?list=PLhNRdHEdUQewzYZ0X6gt3x9_CVen_HldI</a><br>
+      A2: <a href="https://www.youtube.com/playlist?list=PLG4aOWLPpiU94F3pJvdfOSvoPgx1fxbwN" target="_blank" rel="noopener">youtube.com/playlist?list=PLG4aOWLPpiU94F3pJvdfOSvoPgx1fxbwN</a><br>
+      Phần tiếng Anh giữ nguyên lời giáo viên; IPA và bản dịch được biên soạn thêm.
+    </p>
+  </section>
+
+  <section id="lesson" hidden>
+    <div class="lesson-head"><div class="lv" id="lv"></div><h2 id="lt"></h2></div>
+    <div class="tools" role="toolbar" aria-label="Tùy chọn hiển thị">
+      <button class="chip" id="t-ipa" aria-pressed="true">IPA</button>
+      <button class="chip" id="t-vi" aria-pressed="true">Tiếng Việt</button>
+      <button class="chip" id="t-cover" aria-pressed="false" title="Che bản dịch, chạm để xem">Che bản dịch</button>
+      <button class="chip" id="f-down" aria-label="Chữ nhỏ hơn">A−</button>
+      <button class="chip" id="f-reset" title="Về cỡ chữ mặc định">17</button>
+      <button class="chip" id="f-up" aria-label="Chữ to hơn">A+</button>
+    </div>
+    <div id="paras"></div>
+    <div class="nav">
+      <a id="prev" href="#">← Bài trước</a>
+      <button class="mark" id="mark">Đã học xong</button>
+      <a id="next" href="#">Bài sau →</a>
+    </div>
+  </section>
+</main>
+
+<script src="lessons.js"></script>
+<script>
+(function () {
+  const L = window.LESSONS || [];
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  // per-device preferences; the page still works if storage is unavailable
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem("elp:" + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem("elp:" + k, JSON.stringify(v)); } catch (e) {} },
+  };
+  let done = new Set(store.get("done", []));
+  const DEFAULT_FS = 17;
+  const prefs = Object.assign({ ipa: true, vi: true, cover: false, fs: DEFAULT_FS, theme: null }, store.get("prefs", {}));
+  const savePrefs = () => store.set("prefs", prefs);
+
+  function applyPrefs() {
+    document.documentElement.style.setProperty("--fs", prefs.fs + "px");
+    // the middle chip shows the current size and resets it when tapped
+    $("f-reset").textContent = prefs.fs === DEFAULT_FS ? "Cỡ chữ " + prefs.fs : "↺ " + prefs.fs;
+    $("f-reset").setAttribute("aria-label", `Cỡ chữ ${prefs.fs}, chạm để về mặc định ${DEFAULT_FS}`);
+    $("f-reset").setAttribute("aria-pressed", prefs.fs !== DEFAULT_FS);
+    if (prefs.theme) document.documentElement.dataset.theme = prefs.theme;
+    else delete document.documentElement.dataset.theme;
+    const p = $("paras");
+    p.classList.toggle("hide-ipa", !prefs.ipa);
+    p.classList.toggle("hide-vi", !prefs.vi);
+    p.classList.toggle("cover-vi", prefs.cover);
+    $("t-ipa").setAttribute("aria-pressed", prefs.ipa);
+    $("t-vi").setAttribute("aria-pressed", prefs.vi);
+    $("t-cover").setAttribute("aria-pressed", prefs.cover);
+  }
+
+  function renderHome() {
+    const groups = {};
+    L.forEach((l, i) => (groups[l.level] = groups[l.level] || []).push([l, i]));
+    $("levels").innerHTML = Object.entries(groups).map(([lv, items]) =>
+      `<h3 class="level">${lv}</h3><ul class="list">` + items.map(([l], n) =>
+        `<li class="${done.has(l.id) ? "done" : ""}"><a href="#${l.id}">
+          <span class="num">${n + 1}</span><span class="t">${esc(l.title)}</span>
+          <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Đã học"><path d="M20 6L9 17l-5-5"/></svg>
+        </a></li>`).join("") + "</ul>").join("");
+    const count = L.filter((l) => done.has(l.id)).length;
+    $("bar").style.width = (L.length ? (100 * count) / L.length : 0) + "%";
+    $("progress-label").textContent = `Đã học ${count}/${L.length} bài`;
+  }
+
+  const SPEAK_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>';
+  const canSpeak = "speechSynthesis" in window;
+
+  function renderLesson(i) {
+    const l = L[i];
+    $("lv").textContent = `${l.level} · Bài ${L.filter((x) => x.level === l.level).indexOf(l) + 1}`;
+    $("lt").textContent = l.title;
+    $("title").textContent = l.title;
+    $("paras").innerHTML = l.paragraphs.map((p, k) => `
+      <div class="para">
+        <p class="en">${esc(p.en)}</p>
+        <p class="ipa">/${esc(p.ipa)}/</p>
+        <p class="vi">${esc(p.vi)}</p>
+        ${canSpeak ? `<button class="speak" data-k="${k}">${SPEAK_ICON}Nghe</button>` : ""}
+      </div>`).join("");
+    const prev = L[i - 1], next = L[i + 1];
+    $("prev").href = prev ? "#" + prev.id : "#";
+    $("prev").classList.toggle("disabled", !prev);
+    $("next").href = next ? "#" + next.id : "#";
+    $("next").classList.toggle("disabled", !next);
+    updateMark(l);
+    window.scrollTo(0, 0);
+  }
+
+  function updateMark(l) {
+    const isDone = done.has(l.id);
+    $("mark").textContent = isDone ? "✓ Đã học" : "Đã học xong";
+    $("mark").classList.toggle("is-done", isDone);
+  }
+
+  function current() { return L.findIndex((l) => "#" + l.id === location.hash); }
+
+  function route() {
+    if (canSpeak) speechSynthesis.cancel();
+    const i = current();
+    const inLesson = i >= 0;
+    $("home").hidden = inLesson;
+    $("lesson").hidden = !inLesson;
+    $("back").hidden = !inLesson;
+    if (inLesson) renderLesson(i);
+    else { $("title").textContent = "English Listening Practice"; renderHome(); }
+  }
+
+  // text-to-speech with the device's English voice
+  let speakingBtn = null;
+  function speak(btn, text) {
+    speechSynthesis.cancel();
+    if (speakingBtn === btn) { btn.classList.remove("on"); speakingBtn = null; return; }
+    if (speakingBtn) speakingBtn.classList.remove("on");
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = "en-US";
+    u.rate = 0.9;
+    const v = speechSynthesis.getVoices().find((x) => x.lang === "en-US") ||
+              speechSynthesis.getVoices().find((x) => x.lang.startsWith("en"));
+    if (v) u.voice = v;
+    u.onend = u.onerror = () => { btn.classList.remove("on"); if (speakingBtn === btn) speakingBtn = null; };
+    btn.classList.add("on");
+    speakingBtn = btn;
+    speechSynthesis.speak(u);
+  }
+
+  $("paras").addEventListener("click", (e) => {
+    const b = e.target.closest(".speak");
+    if (b) { speak(b, L[current()].paragraphs[+b.dataset.k].en); return; }
+    const vi = e.target.closest(".vi");
+    if (vi && prefs.cover) vi.classList.toggle("shown");
+  });
+  $("t-ipa").onclick = () => { prefs.ipa = !prefs.ipa; savePrefs(); applyPrefs(); };
+  $("t-vi").onclick = () => { prefs.vi = !prefs.vi; savePrefs(); applyPrefs(); };
+  $("t-cover").onclick = () => { prefs.cover = !prefs.cover; if (prefs.cover) prefs.vi = true; savePrefs(); applyPrefs(); };
+  $("f-down").onclick = () => { prefs.fs = Math.max(13, prefs.fs - 1); savePrefs(); applyPrefs(); };
+  $("f-reset").onclick = () => { prefs.fs = DEFAULT_FS; savePrefs(); applyPrefs(); };
+  $("f-up").onclick = () => { prefs.fs = Math.min(26, prefs.fs + 1); savePrefs(); applyPrefs(); };
+  $("theme").onclick = () => {
+    const dark = prefs.theme ? prefs.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    prefs.theme = dark ? "light" : "dark"; savePrefs(); applyPrefs();
+  };
+  $("back").onclick = () => { location.hash = ""; };
+  $("mark").onclick = () => {
+    const l = L[current()];
+    if (done.has(l.id)) done.delete(l.id); else done.add(l.id);
+    store.set("done", [...done]);
+    updateMark(l);
+  };
+  ["prev", "next"].forEach((id) => $(id).addEventListener("click", (e) => {
+    if ($(id).classList.contains("disabled")) e.preventDefault();
+  }));
+
+  window.addEventListener("hashchange", route);
+  applyPrefs();
+  route();
+})();
+</script>
+</body>
+</html>
